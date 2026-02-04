@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3471082371880025" crossorigin="anonymous"></script>
+    
     <title>مكتبة السيد عبدالله هاشم السروري</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    
     <style>
         body { font-family: 'Cairo', sans-serif; margin: 0; background-color: #f0f9f5; color: #1b4332; padding-bottom: 60px; line-height: 1.6; }
         header { background-color: #0b4d3e; color: white; padding: 20px 0; text-align: center; position: sticky; top: 0; z-index: 1000; }
@@ -19,7 +22,9 @@
         .main-category { background-color: #0b7a61; color: white; border-radius: 20px; margin-bottom: 20px; padding: 20px; text-align: center; }
         .section-logo { width: 70px; height: 70px; border-radius: 50%; background: white; padding: 5px; margin-bottom: 10px; }
         
-        .open-btn { background-color: white; color: #0b7a61; border: none; padding: 10px 25px; border-radius: 25px; font-weight: bold; cursor: pointer; }
+        .open-btn { background-color: white; color: #0b7a61; border: none; padding: 10px 25px; border-radius: 25px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        .open-btn:hover { background-color: #e0f2f1; }
+        
         .books-container { display: none; margin-top: 15px; background: #fff; border-radius: 15px; padding: 15px; color: #1b4332; text-align: right; }
         .book-item { background: #f9f9f9; border-right: 5px solid #0b7a61; margin-bottom: 8px; padding: 10px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; }
         
@@ -51,33 +56,33 @@
     </section>
 
     <div class="main-category" style="background-color: #2d6a4f;">
-        <img src="m4.png" class="section-logo">
+        <img src="m4.png" class="section-logo" alt="logo">
         <h2>تطبيق طيبة المحبين</h2>
         <a href="https://t.me/tebatalmhbeen/11" target="_blank" class="open-btn" style="text-decoration:none;">تحميل من التيليجرام</a>
     </div>
 
     <div class="main-category" style="background-color: #386641;">
-        <img src="m0.png" class="section-logo">
+        <img src="m0.png" class="section-logo" alt="logo">
         <h2>تطبيق أطلس السير</h2>
         <a href="https://t.me/tebatalmhbeen/12" target="_blank" class="open-btn" style="text-decoration:none; background-color: #d4a373;">تحميل مباشر APK</a>
     </div>
 
     <div class="main-category">
-        <img src="m1.png" class="section-logo">
+        <img src="m1.png" class="section-logo" alt="logo">
         <h2>قسم التوحيد والعقيدة</h2>
         <button class="open-btn" onclick="toggleSection('tauheed')">عرض الكتب</button>
         <div id="tauheed" class="books-container"></div>
     </div>
 
     <div class="main-category" style="background-color: #086351;">
-        <img src="m2.png" class="section-logo">
+        <img src="m2.png" class="section-logo" alt="logo">
         <h2>قسم الموالد النبوية</h2>
         <button class="open-btn" onclick="toggleSection('mwalid')">عرض الموالد</button>
         <div id="mwalid" class="books-container"></div>
     </div>
 
     <div class="main-category" style="background-color: #054d3f;">
-        <img src="m3.png" class="section-logo">
+        <img src="m3.png" class="section-logo" alt="logo">
         <h2>قسم الدرر البهية (الأوراد)</h2>
         <button class="open-btn" onclick="toggleSection('dorar')">عرض الأوراد</button>
         <div id="dorar" class="books-container">
@@ -92,7 +97,7 @@
     </div>
 
     <div class="main-category" style="background-color: #144d34;">
-        <img src="m4.png" class="section-logo">
+        <img src="m4.png" class="section-logo" alt="logo">
         <h2>قسم قصائد طيبة المحبين</h2>
         <button class="open-btn" onclick="toggleSection('poems')">عرض القصائد</button>
         <div id="poems" class="books-container"></div>
@@ -115,23 +120,53 @@
     function toggleSection(id) {
         const section = document.getElementById(id);
         const isVisible = section.style.display === 'block';
+        
+        // إغلاق جميع الحاويات الأخرى عند فتح واحدة جديدة
         document.querySelectorAll('.books-container').forEach(c => c.style.display = 'none');
+        
         section.style.display = isVisible ? 'none' : 'block';
     }
 
+    // تعبئة قسم التوحيد
     const tauheed = ["العروة الوثيقة", "الروضة الأنيقة", "الدُّرُّ المُنَظَّمْ", "طَائيرةُ السُّبَّاقِ"];
+    const tauheedContainer = document.getElementById('tauheed');
     tauheed.forEach((t, i) => {
-        document.getElementById('tauheed').innerHTML += `<div class="book-item"><div class="book-title">${t}</div><div><a href="roda${i+1}.pdf" class="btn-link btn-view">قراءة</a> <a href="roda${i+1}.pdf" download class="btn-link btn-down">تحميل</a></div></div>`;
+        tauheedContainer.innerHTML += `
+            <div class="book-item">
+                <div class="book-title">${t}</div>
+                <div>
+                    <a href="roda${i+1}.pdf" class="btn-link btn-view">قراءة</a> 
+                    <a href="roda${i+1}.pdf" download class="btn-link btn-down">تحميل</a>
+                </div>
+            </div>`;
     });
 
+    // تعبئة قسم الموالد
     const mwalid = ["شراب الألباب", "عرف الخُزام", "الإنشراح الصدري", "فيض ربي", "الدرر البهية", "عين التسنيم", "أريج الأزهار", "المِسْك الأذفر", "كِيمْياء أرْبَاب القلوب", "الروائح العطرية", "رحيق الشراب", "العسجد", "المِسْك الفوَّاح", "الترياق", "الإتحاف", "عبير الزهر", "جالي الصدا", "نَدُّ النادي", "العود النَّدي", "اللُّبَاب"];
+    const mwalidContainer = document.getElementById('mwalid');
     mwalid.forEach((t, i) => {
-        document.getElementById('mwalid').innerHTML += `<div class="book-item"><div class="book-title">${t}</div><div><a href="mwled${i+1}.pdf" class="btn-link btn-view">قراءة</a> <a href="mwled${i+1}.pdf" download class="btn-link btn-down">تحميل</a></div></div>`;
+        mwalidContainer.innerHTML += `
+            <div class="book-item">
+                <div class="book-title">${t}</div>
+                <div>
+                    <a href="mwled${i+1}.pdf" class="btn-link btn-view">قراءة</a> 
+                    <a href="mwled${i+1}.pdf" download class="btn-link btn-down">تحميل</a>
+                </div>
+            </div>`;
     });
 
+    // تعبئة قسم القصائد
     const poems = ["قسم تحاميد", "قسم جلالات", "قسم تصليات", "قصائد المولد", "الإِبْهاج", "العمدَةُ", "الرَّندَةُ", "الزُبْدَةُ", "القصيدة المحمدية", "الرمزية", "قصيدة حَقِيقَةُ الْحَقَائِق", "الْقَصِيدَةُ الْغَزَلِيَّةُ", "مَا عَرَفَ النَّبِيَّ", "الوسيلة الحسناء", "التوسل الأسنى", "التوسل المزان", "دُرَّةُ الدُّرَرِ", "يَا مُجَلِّيْ الْقَمَرْ", "العدة", "تخميس ابن الوردي", "أنْفَاسٌ هَاشِمِيَّةْ", "حِلْيَةُ الخَدَمِ", "النظم الاغر", "أسْنَى المَطْلَبْ", "المؤلف في سطور"];
+    const poemsContainer = document.getElementById('poems');
     poems.forEach((t, i) => {
-        document.getElementById('poems').innerHTML += `<div class="book-item"><div class="book-title">${t}</div><div><a href="te${i+1}.pdf" class="btn-link btn-view">قراءة</a> <a href="te${i+1}.pdf" download class="btn-link btn-down">تحميل</a></div></div>`;
+        poemsContainer.innerHTML += `
+            <div class="book-item">
+                <div class="book-title">${t}</div>
+                <div>
+                    <a href="te${i+1}.pdf" class="btn-link btn-view">قراءة</a> 
+                    <a href="te${i+1}.pdf" download class="btn-link btn-down">تحميل</a>
+                </div>
+            </div>`;
     });
 </script>
 </body>
