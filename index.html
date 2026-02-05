@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3471082371880025" crossorigin="anonymous"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/ads drug-google.js?client=ca-pub-3471082371880025" crossorigin="anonymous"></script>
     <title>مكتبة طيبة المحبين وروضة المحبوبين</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -157,7 +157,6 @@
         {t:"اللُّبَاب", d:"خلاصة المعاني في ذكر ميلاد النبي ﷺ."}
     ];
 
-    // قسم القصائد معدل ليتوافق مع te11 و te12
     const listPoems = [
         {t:"قسم تحاميد", d:"قصائد في الثناء العاطر على الله تعالى."},
         {t:"قسم جلالات", d:"منظومات في الهيبة والعظمة الإلهية."},
@@ -168,9 +167,9 @@
         {t:"الرَّندَةُ", d:"قصيدة في مدح الحبيب وآل بيته."},
         {t:"الزُبْدَةُ", d:"خلاصة طريق المحبة والتعلق الروحاني."},
         {t:"القصيدة المحمدية", d:"نظم يسرد شمائل النبي ﷺ."},
-        {t:"الرمزية", d:"قصيدة على نهج الهمزية لاحمد شوقي معاني السلوك."},
-        {t:"قصيدة", d:"قصيدة وجدانية من الديوان طيبة المحبين (te11)."}, // تفتح te11.pdf
-        {t:"حَقِيقَةُ الْحَقَائِق", d:"تأملات في حقيقة الوجود والقدرة الإلهية (te12)."}, // تفتح te12.pdf
+        {t:"الرمزية", d:"قصيدة على نهج الهمزية لأحمد شوقي معاني السلوك."},
+        {t:"قصيدة", d:"قصيدة وجدانية من ديوان طيبة المحبين."}, // te11
+        {t:"حَقِيقَةُ الْحَقَائِق", d:"تأملات في حقيقة الوجود والقدرة الإلهية."}, // te12
         {t:"الْقَصِيدَةُ الْغَزَلِيَّةُ", d:"غزل روحي طاهر في محبة الجناب النبوي."},
         {t:"مَا عَرَفَ النَّبِيَّ", d:"قصيدة في عجز العقول عن إدراك قدر النبي."},
         {t:"الوسيلة الحسناء", d:"توسل بأسماء الله الحسنى."},
@@ -184,19 +183,25 @@
         {t:"حِلْيَةُ الخَدَمِ", d:"آداب الخدمة لعلم الشريعة وأهله."},
         {t:"النظم الاغر", d:"دروس من السيرة والتاريخ."},
         {t:"أسْنَى المَطْلَبْ", d:"في بيان المقاصد العليا والقرب من الله."},
-        {t:"المؤلف في سطور", d:"نبذة عن حياة السيد عبدالله هاشم السروري(te11)."}, // تفتح te28.pdf
+        {t:"المؤلف في سطور", d:"نبذة عن حياة السيد عبدالله هاشم السروري."} // سيفتح te28.pdf
     ];
 
     function fillList(id, list, prefix) {
         const container = document.getElementById(id);
         list.forEach((item, i) => {
+            // شرط خاص لعنوان المؤلف في سطور ليفتح ملف رقم 28
+            let fileNum = i + 1;
+            if (item.t === "المؤلف في سطور" && prefix === 'te') {
+                fileNum = 28;
+            }
+
             container.innerHTML += `
                 <div class="book-item">
                     <div class="book-title-row">
                         <strong>${item.t}</strong>
                         <div>
-                            <a href="${prefix}${i+1}.pdf" class="btn-link btn-view">قراءة</a>
-                            <a href="${prefix}${i+1}.pdf" download class="btn-link btn-down">تحميل</a>
+                            <a href="${prefix}${fileNum}.pdf" class="btn-link btn-view">قراءة</a>
+                            <a href="${prefix}${fileNum}.pdf" download class="btn-link btn-down">تحميل</a>
                         </div>
                     </div>
                     <div class="book-desc">${item.d}</div>
