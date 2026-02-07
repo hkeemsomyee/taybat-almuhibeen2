@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/ads drug-google.js?client=ca-pub-3471082371880025" crossorigin="anonymous"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3471082371880025" crossorigin="anonymous"></script>
     <title>مكتبة طيبة المحبين وروضة المحبوبين</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -15,6 +15,7 @@
         .main-category { background-color: #0b7a61; color: white; border-radius: 20px; margin-bottom: 20px; padding: 20px; text-align: center; }
         .section-logo { width: 70px; height: 70px; border-radius: 50%; background: white; padding: 5px; margin-bottom: 10px; }
         .open-btn { background-color: white; color: #0b7a61; border: none; padding: 10px 25px; border-radius: 25px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        .category-desc { padding: 0 15px 15px; font-size: 14px; color: #e0f2f1; text-align: justify; }
         .books-container { display: none; margin-top: 15px; background: #fff; border-radius: 15px; padding: 15px; color: #1b4332; text-align: right; border: 1px solid #eee; }
         .book-item { background: #f9f9f9; border-right: 5px solid #0b7a61; margin-bottom: 10px; padding: 12px; border-radius: 8px; }
         .book-title-row { display: flex; justify-content: space-between; align-items: center; }
@@ -40,24 +41,27 @@
             <img src="author.jpg" style="width:110px; border-radius:50%; border:3px solid #0b7a61;" alt="المؤلف">
             <h2>السيد عبدالله هاشم السروري</h2>
         </div>
-        <p>نرحب بكم في المكتبة الرسمية لنشر تراث السيد عبدالله هاشم السروري، لنشر علوم التوحيد ومنظومات السيرة والمدائح النبوية.</p>
+        <p>نرحب بكم في المكتبة الرسمية المخصصة لنشر وحفظ تراث السيد العلامة عبدالله هاشم السروري، لنشر علوم التوحيد الشريفة ومنظومات السيرة النبوية العطرة والمدائح النبوية الروحانية التي تلامس القلوب وتغذي الأرواح.</p>
     </section>
 
     <div class="main-category" style="background-color: #2d6a4f;">
         <img src="m4.png" class="section-logo">
         <h2>تطبيق طيبة المحبين</h2>
+        <p class="category-desc">تطبيق شامل يجمع دواوين وقصائد طيبة المحبين في واجهة سهلة الاستخدام تتيح للمحبين الوصول السريع للمحتوى الروحاني عبر أجهزة الأندرويد.</p>
         <a href="https://t.me/tebatalmhbeen/11" target="_blank" class="open-btn" style="text-decoration:none;">تحميل من التيليجرام</a>
     </div>
 
     <div class="main-category" style="background-color: #386641;">
         <img src="m0.png" class="section-logo">
         <h2>تطبيق أطلس السير</h2>
+        <p class="category-desc">تطبيق متخصص في سرد السيرة النبوية والموالد الشريفة بطريقة منظمة، يهدف لترسيخ محبة النبي ﷺ وآل بيته الكرام عبر قراءة السير والمناقب.</p>
         <a href="https://t.me/tebatalmhbeen/12" target="_blank" class="open-btn" style="text-decoration:none; background-color: #d4a373;">تحميل APK مباشر</a>
     </div>
 
     <div class="main-category">
         <img src="m1.png" class="section-logo">
         <h2>قسم التوحيد والعقيدة</h2>
+        <p class="category-desc">يحتوي هذا القسم على المؤلفات والمنظومات التي تشرح أصول العقيدة الإسلامية الصحيحة وتوضح مسائل التوحيد والإيمان بأسلوب تعليمي مبسط وموثق.</p>
         <button class="open-btn" onclick="toggleSection('tauheed')">فتح القسم</button>
         <div id="tauheed" class="books-container"></div>
     </div>
@@ -65,6 +69,7 @@
     <div class="main-category" style="background-color: #086351;">
         <img src="m2.png" class="section-logo">
         <h2>قسم الموالد النبوية (أطلس السير)</h2>
+        <p class="category-desc">مجموعة من الموالد النبوية التي تسرد محطات ولادة ونشأة خير البرية ﷺ، مصاغة بأسلوب شعري ونثري بديع يجمع بين العاطفة والمعلومة التاريخية.</p>
         <button class="open-btn" onclick="toggleSection('mwalid')">فتح القسم</button>
         <div id="mwalid" class="books-container"></div>
     </div>
@@ -72,6 +77,7 @@
     <div class="main-category" style="background-color: #054d3f;">
         <img src="m3.png" class="section-logo">
         <h2>قسم الدرر البهية (الأوراد)</h2>
+        <p class="category-desc">خزانة الأذكار والأوراد اليومية المستمدة من الكتاب والسنة ومنهج العارفين، لتعزيز الصلة بالله تعالى وتحصين النفس بذكر الله القوي المتين.</p>
         <button class="open-btn" onclick="toggleSection('dorar')">فتح القسم</button>
         <div id="dorar" class="books-container">
             <div class="book-item">
@@ -90,13 +96,14 @@
     <div class="main-category" style="background-color: #144d34;">
         <img src="m4.png" class="section-logo">
         <h2>قسم قصائد طيبة المحبين</h2>
+        <p class="category-desc">ديوان القصائد الروحانية والمدائح النبوية التي تعبر عن أسمى معاني الحب الإلهي والشوق للحضرة المحمدية، وتضم التحاميد والتوسلات والصلوات.</p>
         <button class="open-btn" onclick="toggleSection('poems')">فتح القسم</button>
         <div id="poems" class="books-container"></div>
     </div>
 
     <section class="author-profile" id="contact" style="text-align: center;">
         <h3>تواصل معنا</h3>
-        <p>يسعدنا تواصلكم عبر المنصات التالية:</p>
+        <p>يسعدنا تواصلكم عبر المنصات التالية لاستقبال مقترحاتكم واستفساراتكم:</p>
         <a href="https://wa.me/00967734404355" style="text-decoration:none; color:#25D366; font-weight:bold; margin:0 15px;">واتساب</a>
         <a href="https://t.me/tebatalmhbeen" style="text-decoration:none; color:#0088cc; font-weight:bold; margin:0 15px;">تيليجرام</a>
     </section>
@@ -168,8 +175,8 @@
         {t:"الزُبْدَةُ", d:"خلاصة طريق المحبة والتعلق الروحاني."},
         {t:"القصيدة المحمدية", d:"نظم يسرد شمائل النبي ﷺ."},
         {t:"الرمزية", d:"قصيدة على نهج الهمزية لأحمد شوقي معاني السلوك."},
-        {t:"قصيدة", d:"قصيدة وجدانية من ديوان طيبة المحبين."}, // te11
-        {t:"حَقِيقَةُ الْحَقَائِق", d:"تأملات في حقيقة الوجود والقدرة الإلهية."}, // te12
+        {t:"قصيدة", d:"قصيدة وجدانية من ديوان طيبة المحبين."},
+        {t:"حَقِيقَةُ الْحَقَائِق", d:"تأملات في حقيقة الوجود والقدرة الإلهية."},
         {t:"الْقَصِيدَةُ الْغَزَلِيَّةُ", d:"غزل روحي طاهر في محبة الجناب النبوي."},
         {t:"مَا عَرَفَ النَّبِيَّ", d:"قصيدة في عجز العقول عن إدراك قدر النبي."},
         {t:"الوسيلة الحسناء", d:"توسل بأسماء الله الحسنى."},
@@ -183,13 +190,12 @@
         {t:"حِلْيَةُ الخَدَمِ", d:"آداب الخدمة لعلم الشريعة وأهله."},
         {t:"النظم الاغر", d:"دروس من السيرة والتاريخ."},
         {t:"أسْنَى المَطْلَبْ", d:"في بيان المقاصد العليا والقرب من الله."},
-        {t:"المؤلف في سطور", d:"نبذة عن حياة السيد عبدالله هاشم السروري."} // سيفتح te28.pdf
+        {t:"المؤلف في سطور", d:"نبذة عن حياة السيد عبدالله هاشم السروري."}
     ];
 
     function fillList(id, list, prefix) {
         const container = document.getElementById(id);
         list.forEach((item, i) => {
-            // شرط خاص لعنوان المؤلف في سطور ليفتح ملف رقم 28
             let fileNum = i + 1;
             if (item.t === "المؤلف في سطور" && prefix === 'te') {
                 fileNum = 28;
