@@ -14,12 +14,12 @@
         .author-profile { background: white; padding: 25px; border-radius: 20px; margin-bottom: 25px; border: 1px solid #d1e7dd; text-align: right; }
         .main-category { background-color: #0b7a61; color: white; border-radius: 20px; margin-bottom: 20px; padding: 20px; text-align: center; }
         .section-logo { width: 70px; height: 70px; border-radius: 50%; background: white; padding: 5px; margin-bottom: 10px; }
-        .open-btn { background-color: white; color: #0b7a61; border: none; padding: 10px 25px; border-radius: 25px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        .open-btn { background-color: white; color: #0b7a61; border: none; padding: 10px 25px; border-radius: 25px; font-weight: bold; cursor: pointer; transition: 0.3s; text-decoration: none; display: inline-block; }
         .category-desc { padding: 0 15px 15px; font-size: 14px; color: #e0f2f1; text-align: justify; }
         .books-container { display: none; margin-top: 15px; background: #fff; border-radius: 15px; padding: 15px; color: #1b4332; text-align: right; border: 1px solid #eee; }
         
         /* تنسيق قسم النصوص المباشرة */
-        .text-content-area { display: none; background: #fff; color: #333; border-radius: 15px; padding: 20px; margin-top: 15px; text-align: right; border: 2px solid #bc6c25; max-height: 500px; overflow-y: auto; }
+        .text-content-area { display: none; background: #fff; color: #333; border-radius: 15px; padding: 20px; margin-top: 15px; text-align: right; border: 2px solid #bc6c25; max-height: 600px; overflow-y: auto; }
         .prayer-card { background: #fdfaf5; border-right: 5px solid #bc6c25; padding: 15px; margin-bottom: 15px; border-radius: 8px; }
         .prayer-title { color: #bc6c25; font-weight: bold; font-size: 18px; border-bottom: 1px solid #ddd; margin-bottom: 10px; display: block; }
         .prayer-text { font-size: 17px; line-height: 2; white-space: pre-wrap; }
@@ -48,50 +48,53 @@
             <img src="author.jpg" style="width:110px; border-radius:50%; border:3px solid #0b7a61;" alt="المؤلف">
             <h2>السيد عبدالله هاشم السروري</h2>
         </div>
-        <p>مكتبة إلكترونية مخصصة لنشر تراث السيد العلامة عبدالله هاشم السروري، في علوم التوحيد، والسيرة النبوية، والمدائح الروحانية.</p>
-        <div style="font-size: 0.85em; color: #555; background: #f9f9f9; padding: 10px; border-radius: 10px; border-right: 4px solid #0b7a61;">
-            هو السيد عبدالله هاشم غالب السروري، الحسيني نسباً، الشاذلي طريقةً. ولد بتعز عام 1385هـ، له العديد من المنظومات العلمية والمؤلفات النافعة.
-        </div>
+        <p>نرحب بكم في المكتبة الرسمية لنشر وحفظ تراث السيد العلامة عبدالله هاشم السروري، لنشر علوم التوحيد الشريفة ومنظومات السيرة النبوية والمدائح الروحانية.</p>
     </section>
 
     <div class="main-category" style="background-color: #2d6a4f;">
         <img src="m4.png" class="section-logo">
         <h2>تطبيق طيبة المحبين</h2>
-        <a href="https://t.me/tebatalmhbeen/11" target="_blank" class="open-btn" style="text-decoration:none;">تحميل App</a>
+        <p class="category-desc">تحميل تطبيق "طيبة المحبين" الخاص بالهواتف لمتابعة الأوراد والقصائد بسهولة.</p>
+        <a href="https://t.me/tebatalmhbeen/11" target="_blank" class="open-btn">تحميل من التيليجرام</a>
     </div>
 
     <div class="main-category" style="background-color: #bc6c25;">
         <img src="m3.png" class="section-logo">
-        <h2>قسم الصلوات المباركات (نصوص)</h2>
-        <p class="category-desc">قراءة مباشرة لأوراد كتاب الدرر البهية من المتصفح مباشرة.</p>
-        <button class="open-btn" onclick="toggleTextSection('salawat-text-only')">عرض النصوص</button>
-        <div id="salawat-text-only" class="text-content-area">
+        <h2>قسم الصلوات المباركات (قراءة مباشرة)</h2>
+        <p class="category-desc">قراءة نصوص "الدرر البهية" مباشرة من المتصفح (المقدمة، دعاء النية، والحزب الأول).</p>
+        <button class="open-btn" onclick="toggleTextSection('salawat-direct')">عرض النصوص</button>
+        
+        <div id="salawat-direct" class="text-content-area">
             <div class="prayer-card">
-                <span class="prayer-title">مقدمة الكتاب</span>
+                <span class="prayer-title">مقدمة المؤلف</span>
                 <div class="prayer-text">الْحَمْدُ لِلَّهِ وَاجِبِ الْوُجُودِ لِذَاتِهِ وَالصَّلَاةُ وَالسَّلَامُ عَلَى سَيِّدِنَا مُحَمَّدٍ ﷺ مَجْلَی مَحَبَّةِ ذَاتِهِ...</div>
+            </div>
+            <div class="prayer-card">
+                <span class="prayer-title">دعاء النية</span>
+                <div class="prayer-text">اللَّهُمَّ إنِّي نَوَيْتُ بِالصَّلَاَةِ عَلَى النَّبِيِّ صَلَّى الله عَلَيْهِ وَسَلِّم إِمْتِثَالاً لِأَمْرِكَ وَتَصْدِيقَاً لِنَبِيِّكَ...</div>
             </div>
             <div class="prayer-card">
                 <span class="prayer-title">الحزب الأول (يوم الأحد)</span>
                 <div class="prayer-text">اللَّهُمَّ صَلِّ بِمُقْتَضَى مُطْلَقِ كَمَالَاتِكَ عَلَى سَيِّدِنَا مُحَمَّدٍ الْبَرِّ المَبَرِّ الرَّؤُوفِ الرَّحِيمِ...</div>
             </div>
-            </div>
+        </div>
     </div>
 
     <div class="main-category" style="background-color: #0b4d3e;">
         <img src="m3.png" class="section-logo">
         <h2>قسم الدرر البهية (ملفات PDF)</h2>
         <p class="category-desc">تحميل وقراءة كتاب الدرر البهية والجواهر السنية كاملاً بصيغة PDF.</p>
-        <button class="open-btn" onclick="toggleSection('dorar-files')">فتح القسم</button>
+        <button class="open-btn" onclick="toggleSection('dorar-files')">فتح ملفات التحميل</button>
         <div id="dorar-files" class="books-container">
             <div class="book-item">
                 <div class="book-title-row">
-                    <strong>الدرر البهية (النسخة الكاملة)</strong>
+                    <strong>كتاب الدرر البهية (PDF)</strong>
                     <div>
                         <a href="alhzb1.pdf" class="btn-link btn-view">قراءة</a>
                         <a href="alhzb1.pdf" download class="btn-link btn-down">تحميل</a>
                     </div>
                 </div>
-                <div class="book-desc">كتاب جامع للأوراد والأذكار والصلوات المباركة.</div>
+                <div class="book-desc">تحميل الكتاب كاملاً بخط واضح مخصص للهاتف.</div>
             </div>
         </div>
     </div>
@@ -155,8 +158,9 @@
     }
 
     const listTauheed = [
-        {t:"العروة الوثيقة", d:"منظومة تعليمية في أصول العقيدة الإسلامية."},
-        {t:"الروضة الأنيقة", d:"شرح ميسر لمنظومة العروة الوثيقة."}
+        {t:"العروة الوثيقة", d:"منظومة في أصول العقيدة الإسلامية."},
+        {t:"الروضة الأنيقة", d:"شرح ميسر لمنظومة العروة الوثيقة."},
+        {t:"الدُّرُّ المُنَظَّمْ", d:"كتاب في مسائل الإيمان والتوحيد."}
     ];
 
     const listMwalid = [
