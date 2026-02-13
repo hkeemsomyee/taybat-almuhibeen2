@@ -4,42 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>مكتبة طيبة المحبين وروضة المحبوبين</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* التنسيق الأساسي لضمان العمل بدون إنترنت قوي */
-        body { font-family: sans-serif; margin: 0; background-color: #f0f9f5; color: #1b4332; padding-bottom: 80px; line-height: 1.6; text-align: right; }
-        header { background-color: #0b4d3e; color: white; padding: 20px 0; text-align: center; }
+        body { font-family: 'Cairo', sans-serif; margin: 0; background-color: #f0f9f5; color: #1b4332; padding-bottom: 80px; line-height: 1.6; }
+        header { background-color: #0b4d3e; color: white; padding: 20px 0; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        header img { height: 80px; border-radius: 8px; }
         .container { max-width: 900px; margin: auto; padding: 15px; }
-        .author-profile { background: white; padding: 20px; border-radius: 12px; margin-bottom: 30px; border-right: 5px solid #2d6a4f; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .section-title { background-color: #2d6a4f; color: white; padding: 12px 20px; border-radius: 8px; margin-top: 20px; font-weight: bold; }
-        .book-item { background: white; padding: 15px; border-radius: 10px; margin-bottom: 12px; border: 1px solid #d8e2dc; }
+        .author-profile { background: white; padding: 20px; border-radius: 12px; display: flex; align-items: center; gap: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 30px; border-right: 5px solid #2d6a4f; }
+        .author-profile img { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid #2d6a4f; }
+        .section-title { background-color: #2d6a4f; color: white; padding: 12px 20px; border-radius: 8px; margin-top: 40px; margin-bottom: 20px; font-weight: bold; }
+        .book-item { background: white; padding: 15px; border-radius: 10px; margin-bottom: 12px; border: 1px solid #d8e2dc; box-shadow: 0 2px 4px rgba(0,0,0,0.03); }
         .book-title-row { display: flex; justify-content: space-between; align-items: center; }
-        .btn-link { text-decoration: none; padding: 6px 15px; border-radius: 6px; font-size: 0.9rem; font-weight: bold; display: inline-block; }
+        .btn-link { text-decoration: none; padding: 6px 15px; border-radius: 6px; font-size: 0.9rem; font-weight: bold; transition: 0.3s; }
         .btn-view { background-color: #d8f3dc; color: #1b4332; margin-left: 5px; }
         .btn-down { background-color: #2d6a4f; color: white; }
-        footer { background-color: #0b4d3e; color: white; text-align: center; padding: 15px 0; position: fixed; bottom: 0; width: 100%; }
+        footer { background-color: #0b4d3e; color: white; text-align: center; padding: 15px 0; position: fixed; bottom: 0; width: 100%; font-size: 0.9rem; }
     </style>
 </head>
 <body>
 
 <header>
+    <img src="logo.png" alt="شعار المكتبة" onerror="this.style.display='none'">
     <h1>مكتبة طيبة المحبين وروضة المحبوبين</h1>
 </header>
 
 <div class="container">
     <div class="author-profile">
-        <h2>السيد عبدالله هاشم السروري</h2>
-        <p>مؤلف وشاعر، له العديد من المؤلفات في الروحانيات، السيرة النبوية، والأدب العربي.</p>
+        <img src="author.jpg" alt="صورة المؤلف" onerror="this.style.display='none'">
+        <div>
+            <h2>السيد عبدالله هاشم السروري</h2>
+            <p>مؤلف وشاعر، له العديد من المؤلفات في الروحانيات، السيرة النبوية، والأدب العربي.</p>
+        </div>
     </div>
 
-    <div class="section-title">📦 كتب السيد عبدالله هاشم السروري</div>
-    <div id="te-books">
-        </div>
+    <div id="main-content">
+        <div class="section-title">📦 كتب السيد عبدالله هاشم السروري</div>
+        <div id="te-books"></div>
+
+        <div class="section-title">📚 كتب من اختيار السيد عبدالله</div>
+        <div id="kh-books"></div>
+
+        <div class="section-title">✍️ مؤلفات أدبية وشعرية</div>
+        <div id="ad-books"></div>
+    </div>
 </div>
 
-<footer>جميع الحقوق محفوظة &copy; 2024</footer>
+<footer>جميع الحقوق محفوظة &copy; 2024 مكتبة طيبة المحبين</footer>
 
 <script>
-    // هذه هي البيانات التي فقدت بسببها الفهرسة، أعدتها لك هنا
     const teBooks = [
         {t:"كتاب المولد النبوي", d:"سيرة عطرة للمصطفى صلى الله عليه وسلم."},
         {t:"الأوراد والذكر", d:"مجموعة من الأذكار الروحانية المختارة."},
@@ -63,31 +75,45 @@
         {t:"المؤلف في سطور", d:"نبذة عن حياة السيد عبدالله هاشم السروري."}
     ];
 
-    function renderBooks() {
-        const container = document.getElementById('te-books');
-        let html = '';
+    const khBooks = [
+        {t:"رياض الصالحين", d:"من كلام سيد المرسلين."},
+        {t:"الشمائل المحمدية", d:"وصف خلق وخُلق النبي الكريم."}
+    ];
+
+    const adBooks = [
+        {t:"الديوان الشعري", d:"أجمل ما قيل في الحكمة والزهد."}
+    ];
+
+    function fillList(id, list, prefix) {
+        const container = document.getElementById(id);
+        if (!container) return;
         
-        teBooks.forEach((item, i) => {
-            let fileNum = (item.t === "المؤلف في سطور") ? 28 : (i + 1);
-            html += `
+        // استخدام Array.map للانضمام مرة واحدة (أسرع للمتصفح)
+        const htmlContent = list.map((item, i) => {
+            let fileNum = (item.t === "المؤلف في سطور" && prefix === 'te') ? 28 : (i + 1);
+            return `
                 <div class="book-item">
                     <div class="book-title-row">
                         <strong>${item.t}</strong>
                         <div>
-                            <a href="te${fileNum}.pdf" class="btn-link btn-view" target="_blank">قراءة</a>
-                            <a href="te${fileNum}.pdf" download class="btn-link btn-down">تحميل</a>
+                            <a href="${prefix}${fileNum}.pdf" class="btn-link btn-view" target="_blank">قراءة</a>
+                            <a href="${prefix}${fileNum}.pdf" download class="btn-link btn-down">تحميل</a>
                         </div>
                     </div>
-                    <p style="font-size:0.9rem; color:#666;">${item.d}</p>
+                    <div style="font-size: 0.9rem; color: #40916c;">${item.d}</div>
                 </div>`;
-        });
+        }).join('');
         
-        container.innerHTML = html;
+        container.innerHTML = htmlContent;
     }
 
-    // التنفيذ المباشر والسريع
-    renderBooks();
+    // تشغيل الفهرسة فوراً
+    fillList('te-books', teBooks, 'te');
+    fillList('kh-books', khBooks, 'kh');
+    fillList('ad-books', adBooks, 'ad');
 </script>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3471082371880025" crossorigin="anonymous"></script>
 
 </body>
 </html>
