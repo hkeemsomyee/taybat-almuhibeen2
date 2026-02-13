@@ -2,114 +2,39 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مكتبة طيبة المحبين وروضة المحبوبين</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <title>مكتبة طيبة المحبين</title>
     <style>
-        body { font-family: 'Cairo', sans-serif; margin: 0; background-color: #f0f9f5; color: #1b4332; padding-bottom: 80px; line-height: 1.6; }
-        header { background-color: #0b4d3e; color: white; padding: 20px 0; text-align: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        header img { height: 80px; border-radius: 8px; }
-        .container { max-width: 900px; margin: auto; padding: 15px; }
-        .author-profile { background: white; padding: 20px; border-radius: 12px; display: flex; align-items: center; gap: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 30px; border-right: 5px solid #2d6a4f; }
-        .author-profile img { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid #2d6a4f; }
-        .section-title { background-color: #2d6a4f; color: white; padding: 12px 20px; border-radius: 8px; margin-top: 40px; margin-bottom: 20px; font-weight: bold; }
-        .book-item { background: white; padding: 15px; border-radius: 10px; margin-bottom: 12px; border: 1px solid #d8e2dc; }
-        .book-title-row { display: flex; justify-content: space-between; align-items: center; }
-        .btn-link { text-decoration: none; padding: 6px 15px; border-radius: 6px; font-size: 0.9rem; font-weight: bold; }
-        .btn-view { background-color: #d8f3dc; color: #1b4332; margin-left: 5px; }
-        .btn-down { background-color: #2d6a4f; color: white; }
-        footer { background-color: #0b4d3e; color: white; text-align: center; padding: 15px 0; position: fixed; bottom: 0; width: 100%; font-size: 0.9rem; }
+        body { font-family: Arial, sans-serif; background: #f4f4f4; text-align: center; padding: 20px; }
+        .book { background: #fff; margin: 10px auto; padding: 15px; max-width: 500px; border-radius: 8px; border: 1px solid #ccc; display: flex; justify-content: space-between; align-items: center; }
+        .btn { text-decoration: none; padding: 5px 10px; background: #0b4d3e; color: #fff; border-radius: 4px; font-size: 14px; }
+        h1 { color: #0b4d3e; }
     </style>
 </head>
 <body>
 
-<header>
-    <img src="logo.png" alt="شعار المكتبة" onerror="this.style.display='none'">
-    <h1>مكتبة طيبة المحبين وروضة المحبوبين</h1>
-</header>
+    <h1>مكتبة طيبة المحبين</h1>
+    <p>إذا ظهرت هذه الصفحة، فالموقع بدأ يعمل. إليك قائمة الكتب:</p>
 
-<div class="container">
-    <div class="author-profile">
-        <img src="author.jpg" alt="صورة المؤلف" onerror="this.style.display='none'">
-        <div>
-            <h2>السيد عبدالله هاشم السروري</h2>
-            <p>مؤلف وشاعر، له العديد من المؤلفات في الروحانيات، السيرة النبوية، والأدب العربي.</p>
-        </div>
-    </div>
+    <div id="list"></div>
 
-    <div class="section-title">📦 كتب السيد عبدالله هاشم السروري</div>
-    <div id="te-books"></div>
+    <script>
+        // قائمة مختصرة للتجربة
+        const books = [
+            {t: "كتاب المولد النبوي", f: "te1.pdf"},
+            {t: "الأوراد والذكر", f: "te2.pdf"},
+            {t: "أنفاس هاشمية", f: "te16.pdf"},
+            {t: "المؤلف في سطور", f: "te28.pdf"}
+        ];
 
-    <div class="section-title">📚 كتب من اختيار السيد عبدالله</div>
-    <div id="kh-books"></div>
-
-    <div class="section-title">✍️ مؤلفات أدبية وشعرية</div>
-    <div id="ad-books"></div>
-</div>
-
-<footer>جميع الحقوق محفوظة &copy; 2026 مكتبة طيبة المحبين</footer>
-
-<script>
-    const teBooks = [
-        {t:"كتاب المولد النبوي", d:"سيرة عطرة للمصطفى صلى الله عليه وسلم."},
-        {t:"الأوراد والذكر", d:"مجموعة من الأذكار الروحانية المختارة."},
-        {t:"قصائد في حب آل البيت", d:"ديوان شعري يعبر عن المحبة والولاء."},
-        {t:"مختصر سيرة النبي", d:"ملخص شامل لأهم أحداث السيرة النبوية."},
-        {t:"المختار من الأحاديث", d:"أحاديث نبوية شريفة في الأخلاق والتربية."},
-        {t:"المنظومة الروحانية", d:"أبيات شعرية في السلوك إلى الله."},
-        {t:"زاد العارفين", d:"مقتطفات من كلام الصالحين."},
-        {t:"قصص الأنبياء للأطفال", d:"بأسلوب مبسط وشيق للناشئة."},
-        {t:"الرسالة الهاشمية", d:"بحث في أنساب وتاريخ آل البيت."},
-        {t:"نور اليقين", d:"مقالات في العقيدة والإيمان."},
-        {t:"التحفة السنية", d:"نظم في الفقه والشريعة."},
-        {t:"مدائح نبوية", d:"أجمل ما قيل في خير البرية."},
-        {t:"مجمع الأذكار", d:"أذكار الصباح والمسا والمناسبات."},
-        {t:"طريق الصالحين", d:"دليل عملي للمريد في طريق التقوى."},
-        {t:"تخميس ابن الوردي", d:"تخميس بديع لوصية ابن الوردي."},
-        {t:"أنْفَاسٌ هَاشِمِيَّةْ", d:"نفحات روحانية في حب آل البيت."},
-        {t:"حِلْيَةُ الخَدَمِ", d:"آداب الخدمة لعلم الشريعة وأهله."},
-        {t:"النظم الاغر", d:"دروس من السيرة والتاريخ."},
-        {t:"أسْنَى المَطْلَبْ", d:"في بيان المقاصد العليا والقرب من الله."},
-        {t:"المؤلف في سطور", d:"نبذة عن حياة السيد عبدالله هاشم السروري."}
-    ];
-
-    const khBooks = [
-        {t:"رياض الصالحين", d:"من كلام سيد المرسلين."},
-        {t:"الشمائل المحمدية", d:"وصف خلق وخُلق النبي الكريم."}
-    ];
-
-    const adBooks = [
-        {t:"الديوان الشعري", d:"أجمل ما قيل في الحكمة والزهد."}
-    ];
-
-    function fillList(id, list, prefix) {
-        const container = document.getElementById(id);
-        if (!container) return;
         let html = '';
-        list.forEach((item, i) => {
-            let fileNum = (item.t === "المؤلف في سطور" && prefix === 'te') ? 28 : (i + 1);
-            html += `
-                <div class="book-item">
-                    <div class="book-title-row">
-                        <strong>${item.t}</strong>
-                        <div>
-                            <a href="${prefix}${fileNum}.pdf" class="btn-link btn-view" target="_blank">قراءة</a>
-                            <a href="${prefix}${fileNum}.pdf" download class="btn-link btn-down">تحميل</a>
-                        </div>
-                    </div>
-                    <div style="font-size:0.9rem; color:#40916c;">${item.d}</div>
-                </div>`;
+        books.forEach(b => {
+            html += `<div class="book">
+                        <span>${b.t}</span>
+                        <a href="${b.f}" class="btn">فتح الكتاب</a>
+                     </div>`;
         });
-        container.innerHTML = html;
-    }
-
-    // التشغيل المباشر
-    fillList('te-books', teBooks, 'te');
-    fillList('kh-books', khBooks, 'kh');
-    fillList('ad-books', adBooks, 'ad');
-</script>
-
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3471082371880025" crossorigin="anonymous"></script>
+        document.getElementById('list').innerHTML = html;
+    </script>
 
 </body>
 </html>
