@@ -7,15 +7,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Cairo', sans-serif; margin: 0; background-color: #f0f9f5; color: #1b4332; padding-bottom: 80px; line-height: 1.6; }
-        header { background-color: #0b4d3e; color: white; padding: 20px 0; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        header { background-color: #0b4d3e; color: white; padding: 20px 0; text-align: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
         header img { height: 80px; border-radius: 8px; }
         .container { max-width: 900px; margin: auto; padding: 15px; }
         .author-profile { background: white; padding: 20px; border-radius: 12px; display: flex; align-items: center; gap: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 30px; border-right: 5px solid #2d6a4f; }
         .author-profile img { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid #2d6a4f; }
         .section-title { background-color: #2d6a4f; color: white; padding: 12px 20px; border-radius: 8px; margin-top: 40px; margin-bottom: 20px; font-weight: bold; }
-        .book-item { background: white; padding: 15px; border-radius: 10px; margin-bottom: 12px; border: 1px solid #d8e2dc; box-shadow: 0 2px 4px rgba(0,0,0,0.03); }
+        .book-item { background: white; padding: 15px; border-radius: 10px; margin-bottom: 12px; border: 1px solid #d8e2dc; }
         .book-title-row { display: flex; justify-content: space-between; align-items: center; }
-        .btn-link { text-decoration: none; padding: 6px 15px; border-radius: 6px; font-size: 0.9rem; font-weight: bold; transition: 0.3s; }
+        .btn-link { text-decoration: none; padding: 6px 15px; border-radius: 6px; font-size: 0.9rem; font-weight: bold; }
         .btn-view { background-color: #d8f3dc; color: #1b4332; margin-left: 5px; }
         .btn-down { background-color: #2d6a4f; color: white; }
         footer { background-color: #0b4d3e; color: white; text-align: center; padding: 15px 0; position: fixed; bottom: 0; width: 100%; font-size: 0.9rem; }
@@ -37,19 +37,17 @@
         </div>
     </div>
 
-    <div id="main-content">
-        <div class="section-title">📦 كتب السيد عبدالله هاشم السروري</div>
-        <div id="te-books"></div>
+    <div class="section-title">📦 كتب السيد عبدالله هاشم السروري</div>
+    <div id="te-books"></div>
 
-        <div class="section-title">📚 كتب من اختيار السيد عبدالله</div>
-        <div id="kh-books"></div>
+    <div class="section-title">📚 كتب من اختيار السيد عبدالله</div>
+    <div id="kh-books"></div>
 
-        <div class="section-title">✍️ مؤلفات أدبية وشعرية</div>
-        <div id="ad-books"></div>
-    </div>
+    <div class="section-title">✍️ مؤلفات أدبية وشعرية</div>
+    <div id="ad-books"></div>
 </div>
 
-<footer>جميع الحقوق محفوظة &copy; 2024 مكتبة طيبة المحبين</footer>
+<footer>جميع الحقوق محفوظة &copy; 2026 مكتبة طيبة المحبين</footer>
 
 <script>
     const teBooks = [
@@ -87,11 +85,10 @@
     function fillList(id, list, prefix) {
         const container = document.getElementById(id);
         if (!container) return;
-        
-        // استخدام Array.map للانضمام مرة واحدة (أسرع للمتصفح)
-        const htmlContent = list.map((item, i) => {
+        let html = '';
+        list.forEach((item, i) => {
             let fileNum = (item.t === "المؤلف في سطور" && prefix === 'te') ? 28 : (i + 1);
-            return `
+            html += `
                 <div class="book-item">
                     <div class="book-title-row">
                         <strong>${item.t}</strong>
@@ -100,14 +97,13 @@
                             <a href="${prefix}${fileNum}.pdf" download class="btn-link btn-down">تحميل</a>
                         </div>
                     </div>
-                    <div style="font-size: 0.9rem; color: #40916c;">${item.d}</div>
+                    <div style="font-size:0.9rem; color:#40916c;">${item.d}</div>
                 </div>`;
-        }).join('');
-        
-        container.innerHTML = htmlContent;
+        });
+        container.innerHTML = html;
     }
 
-    // تشغيل الفهرسة فوراً
+    // التشغيل المباشر
     fillList('te-books', teBooks, 'te');
     fillList('kh-books', khBooks, 'kh');
     fillList('ad-books', adBooks, 'ad');
